@@ -1,6 +1,6 @@
 """
 GRU ile trafik hacmi tahmini
-
+GRU: Gated Recurrent Unit
 
 problem tanımı: şehir içi ana yollardaki, geçmiş verilere bakarak, gelecektek saatlerdeki trafik yoğunluğunu tahmin etmek 
 
@@ -28,3 +28,10 @@ install libraries freeze
 pip install pandas numpy matplotlib seaborn scikit-learn torch fastapi uvicorn streamlit
 en son projenin bağımlılıklarını ve kütüphane sürümlerini sabitlemek için  pip freeze > requirements.txt oluşturduk 
 """
+import pandas as pd # veri işleme ve analizi
+import numpy as np # matematiksel işlemler
+import matplotlib.pyplot as plt # görselleştirme
+import seaborn as sns # gelişmiş görselleştirme
+# veriyi yukleme
+df = pd.read_csv("Metro_Interstate_Traffic_Volume.csv") # csv dosyasını oku
+print(df.head()) # ilk 5 satırı konsola yazdır
