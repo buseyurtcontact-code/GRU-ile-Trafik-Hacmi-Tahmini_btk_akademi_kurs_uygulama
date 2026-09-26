@@ -35,3 +35,26 @@ import seaborn as sns # gelişmiş görselleştirme
 # veriyi yukleme
 df = pd.read_csv("Metro_Interstate_Traffic_Volume.csv") # csv dosyasını oku
 print(df.head()) # ilk 5 satırı konsola yazdır
+# veri çerçevesi hakkında genel bilgi (ka. satır, sütun, veri türleri, eksik veirleri...)
+print(df.info())
+#sütunlardaki eksik değerler
+print(df.isnull().sum())
+#sayısal değişkenler için temel istatistiksel öset (bu aşamalar aslında basit düzyede keşifsel veri analizi)
+print(df.describe())
+# zaman sütunu düzenle
+df["date_time"] = pd.to_datetime(df["date_time"]) # string olarak bulunan date_time sütununu datetime objesine çeviriyoruz
+df.set_index("date_time", inplace=True) # date_time index olur
+print(df.head())
+
+# zaman serisi görselleştirme
+# trafik hacminin zamana göre çizdirilmesi
+plt.figure()
+plt.plot(df["traffic_volume"], label = "Trafik Hacmi", color = "steelblue")
+plt.title("Trafik Hacmi Zaman Serisi")
+plt.xlabel("Tarih")
+plt.ylabel("Trafik Hacmi")
+plt.legend()
+plt.tight_layout()
+plt.savefig("trafik_hacmi_grafigi.png") #codespacede olduğumuz için pltshow yerine
+print("Grafik kaydedildi!")
+
